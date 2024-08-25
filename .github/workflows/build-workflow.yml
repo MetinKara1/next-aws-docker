@@ -32,10 +32,10 @@ jobs:
 
           echo "app_env=$APP_ENV" >> "$GITHUB_OUTPUT"
 
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,./\(.\),\1,')
-          [[ "${{ github.ref }}" == "refs/heads/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's/refs\/heads\///' | sed -e 's/refs\/tags\///' | tr / _)
+          [[ "${{ github.ref }}" == "refs/heads/main" ]] && VERSION="latest"
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
 
-          # Düzeltme burada:
           EPOCHTIME=$(date +"%s")
 
           [ "$VERSION" == "main" ] && VERSION="preprod-$EPOCHTIME"
