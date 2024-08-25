@@ -11,5 +11,5 @@ services:
     environment:
       - NODE_ENV=production
     ports:
-      - "3020:3000"
+      - "3030:3000"
     restart: always
