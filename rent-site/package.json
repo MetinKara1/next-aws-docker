@@ -5,13 +5,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:production": "env-cmd -f .env.production next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.6"
+    "next": "14.2.6",
+    "env-cmd": "^10.1.0"
   },
   "devDependencies": {
     "typescript": "^5",
