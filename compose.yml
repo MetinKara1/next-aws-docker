@@ -22,7 +22,7 @@ services:
       args:
         APP_NODE_ENV: test
     environment:
-      APP_ENV: test
+      NODE_ENV: test
     ports:
       - 3040:3000
     restart: always
