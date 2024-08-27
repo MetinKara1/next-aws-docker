@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <div className="pl-[60px] w-full flex items-center bg-white h-[124px]">
       <div className="flex w-full items-center">
-        <div className="mr-16">
+        <div className="mr-16 cursor-pointer">
           <Logo />
         </div>
         <Searchbox />

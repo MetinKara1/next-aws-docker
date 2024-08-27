@@ -1,3 +1,5 @@
+import Footer from "@/components/Footer/Footer";
+import MobileFooter from "@/components/Footer/MobileFooter";
 import Header from "@/components/Header/Header";
 import MobileHeader from "@/components/Header/MobileHeader";
 import type { Metadata } from "next";
@@ -19,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="sticky top-0 w-full">
+        <div className="sticky top-0 w-full z-10">
           <div className="mobile:hidden tablet:block">
             <Header />
           </div>
@@ -27,7 +29,13 @@ export default function RootLayout({
             <MobileHeader />
           </div>
         </div>
-        {children}
+        <div className="bg-[#F6F7F9]">{children}</div>
+        <div className="mobile:hidden tablet:block">
+          <Footer />
+        </div>
+        <div className="mobile:block tablet:hidden bg-[#F6F7F9]">
+          <MobileFooter />
+        </div>
       </body>
     </html>
   );
