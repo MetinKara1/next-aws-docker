@@ -1,3 +1,5 @@
+import Header from "@/components/Header/Header";
+import MobileHeader from "@/components/Header/MobileHeader";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -16,7 +18,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="sticky top-0 w-full">
+          <div className="mobile:hidden tablet:block">
+            <Header />
+          </div>
+          <div className="tablet:hidden">
+            <MobileHeader />
+          </div>
+        </div>
+        {children}
+      </body>
     </html>
   );
 }
