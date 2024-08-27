@@ -5,7 +5,7 @@ const Searchbox = () => {
   const { SearchIcon, FilterIcon } = useIcons();
   return (
     <div className="flex border rounded-3xl w-[40%]">
-      <div className="px-5 py-2.5">
+      <div className="px-5 py-2.5 cursor-pointer">
         <SearchIcon />
       </div>
       <input
@@ -14,7 +14,7 @@ const Searchbox = () => {
         placeholder="Search something here"
         className="focus:outline-none w-full"
       />
-      <div className="px-5 py-2.5 ">
+      <div className="px-5 py-2.5 cursor-pointer">
         <FilterIcon />
       </div>
     </div>
