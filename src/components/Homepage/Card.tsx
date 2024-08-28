@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Button from "../Button/index";
 
 interface Props {
   title: string;
@@ -7,7 +8,7 @@ interface Props {
   buttonText: string;
   imageUrl: string;
   bgColor: string;
-  buttonBgColor: string;
+  buttonBgColor?: string;
 }
 
 const Card = ({
@@ -18,6 +19,10 @@ const Card = ({
   bgColor,
   buttonBgColor,
 }: Props) => {
+  const onButtonClick = () => {
+    console.log("button clicked");
+  };
+
   return (
     <div
       className="mt-6 border-0 rounded-xl mobile:pl-4 mobile:pt-4 tablet:pl-6 tablet:pt-6 w-full"
@@ -35,13 +40,14 @@ const Card = ({
       <p className="line-clamp-2 mb-5 font-medium text-white mobile:text-xs tablet:text-md tablet:w-[60%]">
         {description}
       </p>
-      <div
-        className="mb-[112px] w-fit border px-5 py-2.5 rounded border-0"
-        style={{
-          backgroundColor: buttonBgColor,
-        }}
-      >
-        <button className="text-white">{buttonText}</button>
+      <div className="mb-[112px] w-fit border py-2.5 rounded border-0">
+        <Button
+          text="Rental Car"
+          type="primary"
+          variant="large"
+          bgColor={buttonBgColor}
+          onClick={onButtonClick}
+        />
       </div>
     </div>
   );

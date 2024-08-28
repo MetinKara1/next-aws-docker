@@ -2,10 +2,13 @@
 import { BREAKPOINTS } from "@/utils/helpers";
 import React from "react";
 import useBreakpoint from "../../../node_modules/use-breakpoint/dist/esm/useBreakpoint";
+import Button from "../Button/index";
+import { useIcons } from "../icons/use-icon";
 import Card from "./Card";
 
 const Homepage = () => {
   const { breakpoint } = useBreakpoint(BREAKPOINTS);
+  const { HeartIcon, WebChatIcon, TriangleIcon, SwapIcon } = useIcons();
   return (
     <div className="">
       <div className="flex gap-8 w-full mobile:px-6 tablet:px-[64px]">
