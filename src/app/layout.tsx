@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="sticky top-0 w-full z-10">
+        <div className="sticky top-0 w-full z-20">
           <div className="mobile:hidden tablet:block">
             <Header />
           </div>
