@@ -19,19 +19,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <div className="sticky top-0 w-full z-20">
-          <div className="mobile:hidden tablet:block">
+    <html lang="en" className="w-full flex justify-center">
+      <body className="flex flex-col width-full items-center">
+        <div className="sticky top-0 w-full z-20 w-[100vw]">
+          <div className="mobile:hidden tablet:flex w-full flex justify-center bg-white">
             <Header />
           </div>
           <div className="tablet:hidden">
             <MobileHeader />
           </div>
         </div>
-        <div className="bg-[#F6F7F9]">{children}</div>
-        <div className="mobile:hidden tablet:block">
-          <Footer />
+        <div className="bg-[#F6F7F9] w-[100vw] flex justify-center">
+          <div className="max-w-[1312px] w-full">{children}</div>
+        </div>
+        <div className="mobile:hidden tablet:flex w-[100vw] bg-white flex justify-center">
+          <div className="max-w-[1440px] w-full">
+            <Footer />
+          </div>
         </div>
         <div className="mobile:block tablet:hidden bg-[#F6F7F9]">
           <MobileFooter />
