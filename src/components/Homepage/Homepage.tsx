@@ -1,52 +1,88 @@
 "use client";
 import { BREAKPOINTS } from "@/utils/helpers";
 import React from "react";
-import useBreakpoint from "../../../node_modules/use-breakpoint/dist/esm/useBreakpoint";
+import useBreakpoint from "use-breakpoint";
 import Button from "../Button/index";
 import { useIcons } from "../icons/use-icon";
 import Card from "./Card";
 import Delivery from "./Delivery";
+import CardVechile from "../Card/index";
+import MainContainer from "../MainContainer";
 
 const Homepage = () => {
   const { breakpoint } = useBreakpoint(BREAKPOINTS);
   const { HeartIcon, WebChatIcon, TriangleIcon, SwapIcon } = useIcons();
   return (
-    <div className="">
-      <div className="flex gap-8 w-full mobile:px-6 tablet:px-[64px]">
-        <Card
-          title="The Best Platform for Rental Car"
-          description="Ease of doing a car rental safely and reliably. Of course at a low price."
-          buttonText="Rental Car"
-          imageUrl="/koenigsegg.png"
-          key="first"
-          bgColor="#54A6FF"
-          buttonBgColor="#3563E9"
-        />
-        {(breakpoint === "laptop" || breakpoint == "desktop") && (
+    <MainContainer>
+      <div className="w-full flex-col justify-center">
+        <div className="flex gap-8 w-full">
           <Card
-            title="Easy way to rent a car at a low price"
-            description="Providing cheap car rental services and safe and comfortable facilities."
+            title="The Best Platform for Rental Car"
+            description="Ease of doing a car rental safely and reliably. Of course at a low price."
             buttonText="Rental Car"
-            imageUrl="/nissan-gt-r.png"
-            key="second"
-            bgColor="#3563E9"
-            buttonBgColor="#54A6FF"
+            imageUrl="/koenigsegg.png"
+            key="first"
+            bgColor="#54A6FF"
+            buttonBgColor="#3563E9"
           />
-        )}
-      </div>
-      <div className="mobile:px-6 tablet:px-[64px] mt-8 laptop:flex laptop:flex-row mobile:flex mobile:flex-col w-full items-center laptop:gap-8 desktop:gap-11">
-        <Delivery title="Pick-Up" iconColor="#3563E9" />
-        <div className="mobile:-my-2 laptop:my-0 z-10">
-          <Button
-            type="primary"
-            variant="large"
-            onClick={() => {}}
-            iconOnly={<SwapIcon fill="white" />}
-          />
+          {(breakpoint === "laptop" || breakpoint == "desktop") && (
+            <Card
+              title="Easy way to rent a car at a low price"
+              description="Providing cheap car rental services and safe and comfortable facilities."
+              buttonText="Rental Car"
+              imageUrl="/nissan-gt-r.png"
+              key="second"
+              bgColor="#3563E9"
+              buttonBgColor="#54A6FF"
+            />
+          )}
         </div>
-        <Delivery title="Drop-Off" iconColor="#54A6FF" />
+        <div className="mt-8 laptop:flex laptop:flex-row mobile:flex mobile:flex-col w-full items-center laptop:gap-8 desktop:gap-11">
+          <Delivery title="Pick-Up" iconColor="#3563E9" />
+          <div className="mobile:-my-2 laptop:my-0 z-10">
+            <Button
+              type="primary"
+              variant="large"
+              onClick={() => {}}
+              iconOnly={<SwapIcon fill="white" />}
+            />
+          </div>
+          <Delivery title="Drop-Off" iconColor="#54A6FF" />
+        </div>
+        <div className="flex justify-between mt-9">
+          <div className="text-[#90A3BF] px-5 py-2.5">Popular Car</div>
+          <div className="text-[#3563E9] px-5 py-2.5">View All</div>
+        </div>
+        <div className="grid tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 gap-8 mt-5 w-full">
+          {[0, 1, 2, 3].map((item, i) => {
+            return <CardVechile key={i} />;
+          })}
+        </div>
+        <div className="flex justify-between mt-9">
+          <div className="text-[#90A3BF] px-5 py-2.5">Recommendation Car</div>
+        </div>
+        <div className="grid tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 gap-8 mt-5 w-full">
+          {[0, 1, 2, 3, 4, 5, 6, 7].map((item, i) => {
+            return <CardVechile key={i} />;
+          })}
+        </div>
+        <div className="w-full flex justify-center mobile:mt-12 tablet:mt-16">
+          <div className="relative flex justify-between items-center">
+            <Button
+              text="Show more car"
+              type="primary"
+              variant={breakpoint === "mobile" ? "medium" : "large"}
+              onClick={() => {}}
+            />
+          </div>
+          <div className="flex items-center">
+            <p className="absolute mobile:right-6 tablet:right-8 laptop:right-12 desktop:right-16 text-md text-[#90A3BF]">
+              120 Car
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
+    </MainContainer>
   );
 };
 

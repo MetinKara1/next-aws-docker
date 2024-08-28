@@ -7,7 +7,7 @@ import Searchbox from "../Searchbox";
 const Header = () => {
   const { Logo, HeartIcon, NotificationIcon, SettingsIcon } = useIcons();
   return (
-    <div className="pl-[60px] w-full flex items-center bg-white h-[124px]">
+    <div className="max-w-[1440px] pl-[60px] w-full flex items-center bg-white h-[124px]">
       <div className="flex w-full items-center">
         <div className="mr-16 cursor-pointer">
           <Logo />
