@@ -66,7 +66,7 @@ const Homepage = () => {
             return <CardVechile key={i} />;
           })}
         </div>
-        <div className="w-full flex justify-center mobile:mt-12 tablet:mt-16">
+        <div className="w-full flex justify-center mobile:my-12 tablet:my-16">
           <div className="relative flex justify-between items-center">
             <Button
               text="Show more car"

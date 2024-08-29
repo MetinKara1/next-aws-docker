@@ -3,13 +3,15 @@ import React from "react";
 import Image from "next/image";
 import { useIcons } from "../icons/use-icon";
 import Searchbox from "../Searchbox";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const { Logo, HeartIcon, NotificationIcon, SettingsIcon } = useIcons();
+  const router = useRouter();
   return (
     <div className="max-w-[1440px] pl-[60px] w-full flex items-center bg-white h-[124px]">
       <div className="flex w-full items-center">
-        <div className="mr-16 cursor-pointer">
+        <div className="mr-16 cursor-pointer" onClick={() => router.push("/")}>
           <Logo />
         </div>
         <Searchbox />
