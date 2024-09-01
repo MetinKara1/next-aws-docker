@@ -9,7 +9,8 @@ interface Props {
   title: string;
   description: string;
   buttonText?: string;
-  imageUrl: string;
+  bgImageUrl?: string;
+  carImageUrl?: string;
   bgColor: string;
   buttonBgColor?: string;
 }
@@ -18,7 +19,8 @@ const BannerCard = ({
   title,
   description,
   buttonText,
-  imageUrl,
+  bgImageUrl,
+  carImageUrl,
   bgColor,
   buttonBgColor,
 }: Props) => {
@@ -31,7 +33,7 @@ const BannerCard = ({
     <div
       className="mt-6 border-0 rounded-xl mobile:p-4 tablet:p-6 w-full"
       style={{
-        backgroundImage: `url(${imageUrl})`,
+        backgroundImage: `url(${bgImageUrl})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -55,7 +57,7 @@ const BannerCard = ({
         {description}
       </p>
       {buttonText && (
-        <div className="pb-[112px] w-fit border py-2.5 rounded border-0">
+        <div className="w-fit border py-2.5 rounded border-0">
           <Button
             text={buttonText}
             type="primary"
@@ -67,7 +69,7 @@ const BannerCard = ({
       )}
       <div className="w-full flex justify-center">
         <Image
-          src="/nissan-gt-r.png"
+          src={carImageUrl}
           alt="nissan"
           width={breakpoint === "mobile" ? 160 : 380}
           height={breakpoint === "mobile" ? 64 : 120}
