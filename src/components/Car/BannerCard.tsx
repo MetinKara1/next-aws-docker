@@ -10,7 +10,7 @@ interface Props {
   description: string;
   buttonText?: string;
   bgImageUrl?: string;
-  carImageUrl?: string;
+  carImageUrl: string;
   bgColor: string;
   buttonBgColor?: string;
 }

@@ -32,7 +32,8 @@ const CarDetail = () => {
               <BannerCard
                 title="Sports car with the best design and acceleration"
                 description="Safety and comfort while driving a futuristic and elegant sports car"
-                imageUrl="/bg-2.png"
+                bgImageUrl="/bg-2.png"
+                carImageUrl="/nissan-gt-r.png"
                 key="first"
                 bgColor="#3563E9"
               />
