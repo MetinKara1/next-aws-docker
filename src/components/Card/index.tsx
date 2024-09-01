@@ -5,10 +5,12 @@ import Image from "next/image";
 import Button from "../Button/index";
 import { BREAKPOINTS } from "@/utils/helpers";
 import useBreakpoint from "use-breakpoint";
+import { useRouter } from "next/navigation";
 
 const Card = () => {
   const { HeartIcon, GasStationIcon, ManualCarIcon, TwoUserIcon } = useIcons();
   const { breakpoint } = useBreakpoint(BREAKPOINTS);
+  const router = useRouter();
   return (
     <div className="w-full">
       <div className="border-0 rounded-xl bg-white mobile:p-4 tablet:p-6 w-full">
@@ -19,7 +21,10 @@ const Card = () => {
           </div>
         </div>
         <p className="font-bold text-sm text-[#90A3BF]">SUV</p>
-        <div className="mobile:flex mobile:flex-row tablet:flex tablet:flex-col mt-[50px]">
+        <div
+          className="mobile:flex mobile:flex-row tablet:flex tablet:flex-col mt-[50px] cursor-pointer"
+          onClick={() => router.push("/car-detail")}
+        >
           <Image
             src="/tiguan.png"
             alt="tiguan"
