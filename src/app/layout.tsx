@@ -30,7 +30,7 @@ export default function RootLayout({
           </div>
         </div>
         <div className="bg-[#F6F7F9] w-[100vw] flex justify-center">
-          <div className="max-w-[1312px] w-full">{children}</div>
+          <div className="max-w-[1440px] w-full">{children}</div>
         </div>
         <div className="mobile:hidden tablet:flex w-[100vw] bg-white flex justify-center">
           <div className="max-w-[1440px] w-full">
