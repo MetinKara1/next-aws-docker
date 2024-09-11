@@ -1,6 +1,6 @@
-import { NextApiRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function middleware(request: NextApiRequest) { 
+export async function middleware(request: NextRequest) { 
   let servicePath;
 
   let req = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/urlApi?url=elektronik`);
