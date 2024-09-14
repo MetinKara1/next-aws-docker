@@ -15,10 +15,9 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       <div className="w-full">
         {label && <label>{label}</label>}
         <select
-          ref={ref}
           {...register(label, { required })}
           className="border-0 rounded-lg py-4 px-8 bg-[#F6F7F9] w-full mt-4"
-          placeholder={placeholder}
+          ref={ref}
         >
           {data?.map((item, i) => {
             return <option key={i}>{item.value}</option>;
@@ -29,9 +28,8 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       <div className="w-full">
         {label && <label>{label}</label>}
         <select
-          ref={ref}
           className="border-0 rounded-lg py-4 px-8 bg-[#F6F7F9] w-full mt-4"
-          //   placeholder={placeholder || ""}
+          ref={ref}
         />
       </div>
     );
