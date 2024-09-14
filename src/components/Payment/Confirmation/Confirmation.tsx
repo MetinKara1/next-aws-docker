@@ -45,7 +45,7 @@ const Confirmation = () => {
           <div className="px-8 py-4 border-0 bg-[#F6F7F9] rounded-xl mb-6">
             <Checkbox
               label="I agree with sending an Marketing and newsletter emails. No spam, promissed!"
-              value={register}
+              value={true}
               className="gap-5"
             />
           </div>
@@ -53,7 +53,7 @@ const Confirmation = () => {
           <div className="px-8 py-4 border-0 bg-[#F6F7F9] rounded-xl mb-8">
             <Checkbox
               label="I agree with our terms and conditions and privacy policy."
-              value={register}
+              value={true}
               className="gap-5"
             />
           </div>
