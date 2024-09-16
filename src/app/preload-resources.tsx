@@ -8,5 +8,5 @@ export function PreloadResources() {
 
   head.render(<link rel="preload" as="image" href="test-image.com" />);
 
-  return "...";
+  return null;
 }
