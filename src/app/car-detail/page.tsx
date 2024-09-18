@@ -2,7 +2,7 @@
 import BannerCard from "@/components/Car/BannerCard";
 import Details from "@/components/Car/Details";
 import Filter from "@/components/Search/Filter";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { BREAKPOINTS } from "@/utils/helpers";
 import useBreakpoint from "use-breakpoint";
@@ -19,6 +19,16 @@ import Button from "@/components/Button/index";
 const CarDetail = () => {
   const { breakpoint } = useBreakpoint(BREAKPOINTS);
   const { ArrowDownIcon, StarIcon, StarOutlineIcon } = useIcons();
+  const [cars, setCars] = useState<any>([]);
+
+  useEffect(() => {
+    console.log("run this scope");
+    fetch("/api/car").then(async (res) => {
+      const response = await res.json();
+      console.log("response: ", response);
+      setCars(response.data);
+    });
+  }, []);
 
   return (
     <div>
@@ -214,8 +224,8 @@ const CarDetail = () => {
             <div className="text-[#3563E9] px-5 py-2.5">View All</div>
           </div>
           <div className="grid tablet:grid-cols-2 llaptop:grid-cols-2 desktop:grid-cols-3 gap-8 mt-5 w-full mobile:px-6 laptop:px-8 pb-8">
-            {[0, 1, 2].map((item, i) => {
-              return <CardVechile key={i} />;
+            {cars.map((item: any, i: number) => {
+              return <CardVechile key={i} item={item} />;
             })}
           </div>
           <div className="flex justify-between mobile:px-6 laptop:px-8">
@@ -223,8 +233,8 @@ const CarDetail = () => {
             <div className="text-[#3563E9] px-5 py-2.5">View All</div>
           </div>
           <div className="grid tablet:grid-cols-2 laptop:grid-cols-2 desktop:grid-cols-3 gap-8 mt-5 w-full mobile:px-6 laptop:px-8 pb-8">
-            {[0, 1, 2].map((item, i) => {
-              return <CardVechile key={i} />;
+            {cars.map((item: any, i: number) => {
+              return <CardVechile key={i} item={item} />;
             })}
           </div>
         </div>

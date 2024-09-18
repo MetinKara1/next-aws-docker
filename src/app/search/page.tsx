@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useBreakpoint from "use-breakpoint";
 import Button from "@/components/Button/index";
 import Delivery from "@/components/Homepage/Delivery";
@@ -9,6 +9,17 @@ import CardVechile from "../../components/Card/index";
 import Filter from "@/components/Search/Filter";
 
 const Search = () => {
+  const [cars, setCars] = useState<any>([]);
+
+  useEffect(() => {
+    console.log("run this scope");
+    fetch("/api/car").then(async (res) => {
+      const response = await res.json();
+      console.log("response: ", response);
+      setCars(response.data);
+    });
+  }, []);
+
   const { breakpoint } = useBreakpoint(BREAKPOINTS);
   const { SwapIcon } = useIcons();
   return (
@@ -30,8 +41,8 @@ const Search = () => {
           <Delivery title="Drop-Off" iconColor="#54A6FF" />
         </div>
         <div className="grid tablet:grid-cols-2 laptop:grid-cols-2 desktop:grid-cols-3 gap-8 mt-5 w-full">
-          {[0, 1, 2, 3, 4, 5, 6, 7].map((item, i) => {
-            return <CardVechile key={i} />;
+          {cars.map((item: any, i: number) => {
+            return <CardVechile key={i} item={item} />;
           })}
         </div>
         <div className="w-full flex justify-center mobile:my-12 tablet:my-16">
