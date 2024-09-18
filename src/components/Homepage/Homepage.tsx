@@ -1,6 +1,6 @@
 "use client";
 import { BREAKPOINTS } from "@/utils/helpers";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useBreakpoint from "use-breakpoint";
 import Button from "../Button/index";
 import { useIcons } from "../icons/use-icon";
@@ -10,6 +10,16 @@ import CardVechile from "../Card/index";
 import MainContainer from "../MainContainer";
 
 const Homepage = () => {
+  const [cars, setCars] = useState<any>([]);
+  useEffect(() => {
+    console.log("run this scope");
+    fetch("/api/car").then(async (res) => {
+      const data = await res.json();
+      console.log("response: ", data);
+      setCars(data);
+    });
+  }, []);
+
   const { breakpoint } = useBreakpoint(BREAKPOINTS);
   const { HeartIcon, WebChatIcon, TriangleIcon, SwapIcon } = useIcons();
   return (
@@ -56,16 +66,16 @@ const Homepage = () => {
           <div className="text-[#3563E9] px-5 py-2.5">View All</div>
         </div>
         <div className="grid tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 gap-8 mt-5 w-full">
-          {[0, 1, 2, 3].map((item, i) => {
-            return <CardVechile key={i} />;
+          {cars.map((item: any, i: number) => {
+            return <CardVechile key={i} item={item} />;
           })}
         </div>
         <div className="flex justify-between mt-9">
           <div className="text-[#90A3BF] px-5 py-2.5">Recommendation Car</div>
         </div>
         <div className="grid tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 gap-8 mt-5 w-full">
-          {[0, 1, 2, 3, 4, 5, 6, 7].map((item, i) => {
-            return <CardVechile key={i} />;
+          {cars.map((item: any, i: number) => {
+            return <CardVechile key={i} item={item} />;
           })}
         </div>
         <div className="w-full flex justify-center mobile:my-12 tablet:my-16">
