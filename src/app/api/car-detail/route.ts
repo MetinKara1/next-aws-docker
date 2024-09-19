@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from "next/server"
 
 
 export const GET = (request: NextRequest, response: NextResponse) => {
+    const url = new URL(request.url);
+    const searchParams = url.searchParams;
+    const id = searchParams.get("id");
+
     const cars = [
         {
             id: 1,
@@ -28,7 +32,7 @@ export const GET = (request: NextRequest, response: NextResponse) => {
                     url: "/car-detail-2.png"
                 }
             ],
-            capacity: 4,
+            capacity: 2,
             gas: "70L",
             price: "$96.00",
             reviews: [
@@ -166,7 +170,7 @@ export const GET = (request: NextRequest, response: NextResponse) => {
                     url: "/car-detail-2.png"
                 }
             ],
-            capacity: 6,
+            capacity: 2,
             gas: "70L",
             price: "$96.00",
             reviews: [
@@ -212,8 +216,8 @@ export const GET = (request: NextRequest, response: NextResponse) => {
                     url: "/car-detail-2.png"
                 }
             ],
-            capacity: 6,
-            gas: "90L",
+            capacity: 2,
+            gas: "70L",
             price: "$96.00",
             reviews: [
                 {
@@ -235,7 +239,9 @@ export const GET = (request: NextRequest, response: NextResponse) => {
         }
     ];
 
-    return NextResponse.json(cars, {
+    const carDetail = cars.find(x => x.searchKey === id);
+
+    return NextResponse.json(carDetail, {
         status: 200
     })
 }
