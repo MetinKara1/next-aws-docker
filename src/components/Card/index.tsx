@@ -8,12 +8,13 @@ import useBreakpoint from "use-breakpoint";
 import { useRouter } from "next/navigation";
 
 interface CardProps {
+  searchKey: string;
   name: string;
   type: string;
   imageUrl: string;
   gas: string;
   capacity: number;
-  gearType: string;
+  steering: string;
   price: string;
 }
 
@@ -38,7 +39,7 @@ const Card = (props: { item: CardProps }) => {
         <div>
           <div
             className="mobile:flex mobile:flex-row tablet:flex tablet:flex-col mt-[50px] cursor-pointer"
-            onClick={() => router.push("/car-detail")}
+            onClick={() => router.push(`/car-detail/${item.searchKey}`)}
           >
             <Image
               src={item.imageUrl}
@@ -54,7 +55,7 @@ const Card = (props: { item: CardProps }) => {
               </div>
               <div className="flex items-center gap-[6px]">
                 <ManualCarIcon />
-                <p className="mobile:text-xs tablet:text-md">{item.gearType}</p>
+                <p className="mobile:text-xs tablet:text-md">{item.steering}</p>
               </div>
               <div className="flex items-center gap-[6px]">
                 <TwoUserIcon />
