@@ -10,7 +10,7 @@ import Top5CarRentalSkeleton from "@/components/Profile/Top5CarRental/Top5CarRen
 import RecentTransactionSkeleton from "@/components/Profile/RecentTransaction/RecentTransactionSkeleton";
 
 const Page = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   return (
     <div className="h-full">
       <div className="mobile:flex mobile:flex-col laptop:flex laptop:flex-row w-full">
