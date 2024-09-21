@@ -3,9 +3,6 @@ import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 import { Card, CardContent, CardHeader } from "./index";
-import Input from "@/components/Form/Input";
-import Delivery from "@/components/Homepage/Delivery";
-import Select from "@/components/Form/Select";
 import Checkbox from "@/components/Checkbox/index";
 import Button from "@/components/Button/index";
 import { useIcons } from "@/components/icons/use-icon";

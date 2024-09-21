@@ -8,7 +8,7 @@ interface Props {
 const Delivery = ({ iconColor, title }: Props) => {
   return (
     <div className="w-full flex justify-around">
-      <div className="border-0 rounded-2xl bg-white w-full mobile:px-4 laptop:px-7 desktop:px-12 py-6">
+      <div className=" bg-white w-full py-6">
         <div className="flex items-center mb-4">
           <div
             className="relative border-0 rounded-full w-2 h-2 flex justify-center items-center"

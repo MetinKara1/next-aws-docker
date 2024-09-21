@@ -1,13 +1,10 @@
 "use client";
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import Image from "next/image";
 import { BREAKPOINTS } from "@/utils/helpers";
 import useBreakpoint from "use-breakpoint";
 import { useIcons } from "../../icons/use-icon";
 import { Card, CardContent, CardHeader } from "./index";
-import Input from "@/components/Form/Input";
-import Delivery from "@/components/Homepage/Delivery";
 import Select from "@/components/Form/Select";
 
 interface IFormValues {

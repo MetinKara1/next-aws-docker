@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import useBreakpoint from "use-breakpoint";
 import Button from "@/components/Button/index";
-import Delivery from "@/components/Homepage/Delivery";
+import Delivery from "@/components/Delivery";
 import { useIcons } from "@/components/icons/use-icon";
 import { BREAKPOINTS } from "@/utils/helpers";
 import CardVechile from "../../components/Card/index";
@@ -29,7 +29,9 @@ const Search = () => {
       </div>
       <div className="mobile:px-6 laptop:px-8 flex-col items-center w-full">
         <div className="mt-8 laptop:flex desktop:flex-row mobile:flex mobile:flex-col w-full items-center laptop:gap-8 desktop:gap-8">
-          <Delivery title="Pick-Up" iconColor="#3563E9" />
+          <div className="border-0 rounded-2xl mobile:px-4 laptop:px-7 desktop:px-12 bg-white w-full">
+            <Delivery title="Pick-Up" iconColor="#3563E9" />
+          </div>
           <div className="mobile:-my-2 desktop:my-0 z-10">
             <Button
               type="primary"
@@ -38,7 +40,9 @@ const Search = () => {
               iconOnly={<SwapIcon fill="white" />}
             />
           </div>
-          <Delivery title="Drop-Off" iconColor="#54A6FF" />
+          <div className="border-0 rounded-2xl mobile:px-4 laptop:px-7 desktop:px-12 bg-white w-full">
+            <Delivery title="Drop-Off" iconColor="#54A6FF" />
+          </div>
         </div>
         <div className="grid tablet:grid-cols-2 laptop:grid-cols-2 desktop:grid-cols-3 gap-8 mt-5 w-full">
           {cars.map((item: any, i: number) => {
