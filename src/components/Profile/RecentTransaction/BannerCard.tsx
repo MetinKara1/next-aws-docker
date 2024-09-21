@@ -26,7 +26,7 @@ const BannerCard = ({ bgImageUrl, carImageUrl, bgColor }: Props) => {
     >
       <div className="w-full flex justify-center">
         <Image
-          src={carImageUrl}
+          src={carImageUrl || ""}
           alt="nissan"
           width={breakpoint === "mobile" ? 102 : 116}
           height={breakpoint === "mobile" ? 32 : 36}

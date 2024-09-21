@@ -10,13 +10,7 @@ interface Props {
   bgColor: string;
 }
 
-const BannerCard = ({
-  title,
-  description,
-  bgImageUrl,
-  carImageUrl,
-  bgColor,
-}: Props) => {
+const BannerCard = ({ bgImageUrl, carImageUrl, bgColor }: Props) => {
   const { breakpoint } = useBreakpoint(BREAKPOINTS);
 
   return (

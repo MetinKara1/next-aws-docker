@@ -8,8 +8,6 @@ import {
   Top5CarRentalContent,
   Top5CarRentalHeader,
 } from "./index";
-import BannerCard from "./BannerCard";
-import Delivery from "@/components/Delivery";
 
 const Top5CarRentals = () => {
   const { breakpoint } = useBreakpoint(BREAKPOINTS);
