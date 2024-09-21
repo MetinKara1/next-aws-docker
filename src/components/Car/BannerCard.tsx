@@ -25,7 +25,7 @@ const BannerCard = ({
   buttonBgColor,
 }: Props) => {
   const { breakpoint } = useBreakpoint(BREAKPOINTS);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const onButtonClick = () => {
     console.log("button clicked");
   };

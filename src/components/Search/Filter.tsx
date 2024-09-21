@@ -4,7 +4,7 @@ import Checkbox from "../Checkbox/index";
 import Skeleton from "../Skeleton/index";
 
 const Filter = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const skeletonArr = [
     {
       id: 1,

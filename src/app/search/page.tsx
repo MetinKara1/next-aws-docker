@@ -12,7 +12,7 @@ import CardSkeleton from "@/components/Card/CardSkeleton";
 
 const Search = () => {
   const [cars, setCars] = useState<any>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     console.log("run this scope");

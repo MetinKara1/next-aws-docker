@@ -19,7 +19,7 @@ interface IFormValues {
 }
 
 const Payment = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   return (
     <div className="mobile:m-6 laptop:m-8">
       <div className="relative mobile:flex mobile:flex-col-reverse laptop:flex laptop:flex-row mobile:gap-6 laptop:gap-8">
