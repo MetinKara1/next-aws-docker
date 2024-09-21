@@ -5,7 +5,7 @@ import useBreakpoint from "use-breakpoint";
 import Button from "../Button/index";
 import { useIcons } from "../icons/use-icon";
 import BannerCard from "../Car/BannerCard";
-import Delivery from "./Delivery";
+import Delivery from "../Delivery";
 import CardVechile from "../Card/index";
 import MainContainer from "../MainContainer";
 
@@ -50,7 +50,9 @@ const Homepage = () => {
           )}
         </div>
         <div className="mt-8 laptop:flex laptop:flex-row mobile:flex mobile:flex-col w-full items-center laptop:gap-8 desktop:gap-11">
-          <Delivery title="Pick-Up" iconColor="#3563E9" />
+          <div className="border-0 rounded-2xl mobile:px-4 laptop:px-7 desktop:px-12 bg-white w-full">
+            <Delivery title="Pick-Up" iconColor="#3563E9" />
+          </div>
           <div className="mobile:-my-2 laptop:my-0 z-10">
             <Button
               type="primary"
@@ -59,7 +61,9 @@ const Homepage = () => {
               iconOnly={<SwapIcon fill="white" />}
             />
           </div>
-          <Delivery title="Drop-Off" iconColor="#54A6FF" />
+          <div className="border-0 rounded-2xl mobile:px-4 laptop:px-7 desktop:px-12 bg-white w-full">
+            <Delivery title="Drop-Off" iconColor="#54A6FF" />
+          </div>
         </div>
         <div className="flex justify-between mt-9">
           <div className="text-[#90A3BF] px-5 py-2.5">Popular Car</div>
