@@ -5,11 +5,11 @@ import { cars } from "../../../utils/database";
 export const GET = (request: NextRequest, response: NextResponse) => {
     const url = new URL(request.url);
     const searchParams = url.searchParams;
-    const id = searchParams.get("id");
+    const search = searchParams.get("search");
 
-    const carDetail = cars.find(x => x.searchKey === id);
+    let filterCars: any = cars.filter(x => x.searchKey.includes(search || ""));
 
-    return NextResponse.json(carDetail, {
+    return NextResponse.json(filterCars, {
         status: 200
     })
 }
