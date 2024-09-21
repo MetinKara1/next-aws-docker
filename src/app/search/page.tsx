@@ -7,16 +7,19 @@ import { useIcons } from "@/components/icons/use-icon";
 import { BREAKPOINTS } from "@/utils/helpers";
 import CardVechile from "../../components/Card/index";
 import Filter from "@/components/Search/Filter";
+import DeliverySkeleton from "@/components/DeliverySkeleton";
+import CardSkeleton from "@/components/Card/CardSkeleton";
 
 const Search = () => {
   const [cars, setCars] = useState<any>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     console.log("run this scope");
     fetch("/api/car").then(async (res) => {
       const response = await res.json();
       console.log("response: ", response);
-      setCars(response.data);
+      setCars(response);
     });
   }, []);
 
@@ -30,7 +33,11 @@ const Search = () => {
       <div className="mobile:px-6 laptop:px-8 flex-col items-center w-full">
         <div className="mt-8 laptop:flex desktop:flex-row mobile:flex mobile:flex-col w-full items-center laptop:gap-8 desktop:gap-8">
           <div className="border-0 rounded-2xl mobile:px-4 laptop:px-7 desktop:px-12 bg-white w-full">
-            <Delivery title="Pick-Up" iconColor="#3563E9" />
+            {loading ? (
+              <DeliverySkeleton />
+            ) : (
+              <Delivery title="Pick-Up" iconColor="#3563E9" />
+            )}
           </div>
           <div className="mobile:-my-2 desktop:my-0 z-10">
             <Button
@@ -41,13 +48,19 @@ const Search = () => {
             />
           </div>
           <div className="border-0 rounded-2xl mobile:px-4 laptop:px-7 desktop:px-12 bg-white w-full">
-            <Delivery title="Drop-Off" iconColor="#54A6FF" />
+            {loading ? (
+              <DeliverySkeleton />
+            ) : (
+              <Delivery title="Drop-Off" iconColor="#54A6FF" />
+            )}
           </div>
         </div>
         <div className="grid tablet:grid-cols-2 laptop:grid-cols-2 desktop:grid-cols-3 gap-8 mt-5 w-full">
-          {cars.map((item: any, i: number) => {
-            return <CardVechile key={i} item={item} />;
-          })}
+          {loading
+            ? [0, 1, 2].map((item) => <CardSkeleton key={item} />)
+            : cars?.map((item: any, i: number) => {
+                return <CardVechile key={i} item={item} />;
+              })}
         </div>
         <div className="w-full flex justify-center mobile:my-12 tablet:my-16">
           <div className="relative flex justify-between items-center">

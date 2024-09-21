@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Button from "../Button/index";
 import { BREAKPOINTS } from "@/utils/helpers";
@@ -25,6 +25,7 @@ const BannerCard = ({
   buttonBgColor,
 }: Props) => {
   const { breakpoint } = useBreakpoint(BREAKPOINTS);
+  const [loading, setLoading] = useState(true);
   const onButtonClick = () => {
     console.log("button clicked");
   };
@@ -74,6 +75,8 @@ const BannerCard = ({
           width={breakpoint === "mobile" ? 160 : 380}
           height={breakpoint === "mobile" ? 64 : 120}
           priority
+          className={`${!loading ? "opacity-0" : "opacity-100"}}`}
+          onLoadingComplete={() => setLoading(true)}
         />
       </div>
     </div>
