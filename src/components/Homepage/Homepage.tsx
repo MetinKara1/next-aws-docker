@@ -14,7 +14,7 @@ import DeliverySkeleton from "../DeliverySkeleton";
 
 const Homepage = () => {
   const [cars, setCars] = useState<any>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     console.log("run this scope");
     fetch("/api/car").then(async (res) => {

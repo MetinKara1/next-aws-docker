@@ -19,7 +19,7 @@ import CarDetailSkeleton from "@/components/Car/CarDetailSkeleton";
 import ReviewSkeleton from "@/components/Car/ReviewSkeleton";
 
 const CarDetail = (props: any) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   console.log("propsss: ", props);
   const { breakpoint } = useBreakpoint(BREAKPOINTS);
   const { ArrowDownIcon, StarIcon, StarOutlineIcon } = useIcons();
