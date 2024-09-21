@@ -16,11 +16,14 @@ const Homepage = () => {
   const [cars, setCars] = useState<any>([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    console.log("run this scope");
+    setLoading(true);
     fetch("/api/car").then(async (res) => {
       const data = await res.json();
       console.log("response: ", data);
-      setCars(data);
+      setTimeout(() => {
+        setCars(data);
+        setLoading(false);
+      }, 3000);
     });
   }, []);
 

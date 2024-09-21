@@ -10,8 +10,10 @@ const Searchbox = () => {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
+      console.log("run again: ", inputValue);
       e.preventDefault();
-      router.push("/search");
+      router.push(`search?search=${inputValue}`);
+      setInputValue("");
     }
   };
 

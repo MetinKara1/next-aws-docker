@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import useBreakpoint from "use-breakpoint";
 import Button from "@/components/Button/index";
 import Delivery from "@/components/Delivery";
@@ -9,26 +10,32 @@ import CardVechile from "../../components/Card/index";
 import Filter from "@/components/Search/Filter";
 import DeliverySkeleton from "@/components/DeliverySkeleton";
 import CardSkeleton from "@/components/Card/CardSkeleton";
+import FilterSkeleton from "@/components/Search/FilterSkeleton";
 
-const Search = () => {
+const Search = (props: any) => {
   const [cars, setCars] = useState<any>([]);
   const [loading, setLoading] = useState(false);
+  const params = useSearchParams();
+  const searchTerms = params.get("search");
 
   useEffect(() => {
-    console.log("run this scope");
-    fetch("/api/car").then(async (res) => {
+    setLoading(true);
+    fetch(`/api/search?search=${searchTerms}`).then(async (res) => {
       const response = await res.json();
-      console.log("response: ", response);
-      setCars(response);
+      console.log("search response: ", response);
+      setTimeout(() => {
+        setLoading(false);
+        setCars(response);
+      }, 3000);
     });
-  }, []);
+  }, [searchTerms]);
 
   const { breakpoint } = useBreakpoint(BREAKPOINTS);
   const { SwapIcon } = useIcons();
   return (
     <div className="flex h-full w-full justify-center">
       <div className="mobile:hidden laptop:block">
-        <Filter />
+        {loading ? <FilterSkeleton /> : <Filter />}
       </div>
       <div className="mobile:px-6 laptop:px-8 flex-col items-center w-full">
         <div className="mt-8 laptop:flex desktop:flex-row mobile:flex mobile:flex-col w-full items-center laptop:gap-8 desktop:gap-8">

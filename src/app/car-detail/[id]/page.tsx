@@ -17,6 +17,8 @@ import { useIcons } from "@/components/icons/use-icon";
 import Button from "@/components/Button/index";
 import CarDetailSkeleton from "@/components/Car/CarDetailSkeleton";
 import ReviewSkeleton from "@/components/Car/ReviewSkeleton";
+import MenuSkeleton from "@/components/Profile/Menu/MenuSkeleton";
+import FilterSkeleton from "@/components/Search/FilterSkeleton";
 
 const CarDetail = (props: any) => {
   const [loading, setLoading] = useState(false);
@@ -27,11 +29,14 @@ const CarDetail = (props: any) => {
   const [carDetail, setCarDetail] = useState<any>({});
 
   useEffect(() => {
-    console.log("run this scope");
+    setLoading(true);
     fetch("/api/car").then(async (res) => {
       const response = await res.json();
       console.log("response: ", response);
-      setCars(response);
+      setTimeout(() => {
+        setCars(response);
+        setLoading(false);
+      }, 3000);
     });
 
     fetch(`/api/car-detail?id=${props.params?.id}`).then(async (res) => {
@@ -45,7 +50,7 @@ const CarDetail = (props: any) => {
     <div>
       <div className="flex h-full w-full justify-center">
         <div className="mobile:hidden laptop:block">
-          <Filter />
+          {loading ? <FilterSkeleton /> : <Filter />}
         </div>
         <div className="">
           <div className="w-full mobile:flex mobile:flex-col desktop:flex desktop:flex-row gap-8 mobile:px-6 laptop:px-8">
