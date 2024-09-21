@@ -8,9 +8,13 @@ import BannerCard from "../Car/BannerCard";
 import Delivery from "../Delivery";
 import CardVechile from "../Card/index";
 import MainContainer from "../MainContainer";
+import "react-loading-skeleton/dist/skeleton.css";
+import CardSkeleton from "../Card/CardSkeleton";
+import DeliverySkeleton from "../DeliverySkeleton";
 
 const Homepage = () => {
   const [cars, setCars] = useState<any>([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     console.log("run this scope");
     fetch("/api/car").then(async (res) => {
@@ -21,7 +25,7 @@ const Homepage = () => {
   }, []);
 
   const { breakpoint } = useBreakpoint(BREAKPOINTS);
-  const { HeartIcon, WebChatIcon, TriangleIcon, SwapIcon } = useIcons();
+  const { SwapIcon } = useIcons();
   return (
     <MainContainer>
       <div className="w-full flex-col justify-center">
@@ -51,7 +55,11 @@ const Homepage = () => {
         </div>
         <div className="mt-8 laptop:flex laptop:flex-row mobile:flex mobile:flex-col w-full items-center laptop:gap-8 desktop:gap-11">
           <div className="border-0 rounded-2xl mobile:px-4 laptop:px-7 desktop:px-12 bg-white w-full">
-            <Delivery title="Pick-Up" iconColor="#3563E9" />
+            {loading ? (
+              <DeliverySkeleton />
+            ) : (
+              <Delivery title="Pick-Up" iconColor="#3563E9" />
+            )}
           </div>
           <div className="mobile:-my-2 laptop:my-0 z-10">
             <Button
@@ -62,7 +70,11 @@ const Homepage = () => {
             />
           </div>
           <div className="border-0 rounded-2xl mobile:px-4 laptop:px-7 desktop:px-12 bg-white w-full">
-            <Delivery title="Drop-Off" iconColor="#54A6FF" />
+            {loading ? (
+              <DeliverySkeleton />
+            ) : (
+              <Delivery title="Drop-Off" iconColor="#54A6FF" />
+            )}
           </div>
         </div>
         <div className="flex justify-between mt-9">
@@ -70,17 +82,21 @@ const Homepage = () => {
           <div className="text-[#3563E9] px-5 py-2.5">View All</div>
         </div>
         <div className="grid tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 gap-8 mt-5 w-full">
-          {cars.map((item: any, i: number) => {
-            return <CardVechile key={i} item={item} />;
-          })}
+          {loading || cars?.length === 0
+            ? [0, 1, 2, 3].map((item) => <CardSkeleton key={item} />)
+            : cars.map((item: any, i: number) => {
+                return <CardVechile key={i} item={item} />;
+              })}
         </div>
         <div className="flex justify-between mt-9">
           <div className="text-[#90A3BF] px-5 py-2.5">Recommendation Car</div>
         </div>
         <div className="grid tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 gap-8 mt-5 w-full">
-          {cars.map((item: any, i: number) => {
-            return <CardVechile key={i} item={item} />;
-          })}
+          {cars?.length === 0
+            ? [0, 1, 2, 3].map((item) => <CardSkeleton key={item} />)
+            : cars.map((item: any, i: number) => {
+                return <CardVechile key={i} item={item} />;
+              })}
         </div>
         <div className="w-full flex justify-center mobile:my-12 tablet:my-16">
           <div className="relative flex justify-between items-center">
