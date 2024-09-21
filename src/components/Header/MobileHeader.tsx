@@ -4,8 +4,10 @@ import Image from "next/image";
 import { useIcons } from "../icons/use-icon";
 import MobileSearchbox from "../MobileSearchbox";
 import MobileMenu from "./MobileMenu";
+import { useRouter } from "next/navigation";
 
 const MobileHeader = () => {
+  const router = useRouter();
   const { Logo, HamburgerMenuIcon } = useIcons();
 
   return (
@@ -14,7 +16,10 @@ const MobileHeader = () => {
         <div>
           <HamburgerMenuIcon />
         </div>
-        <div className="border rounded-full w-11 h-11 cursor-pointer">
+        <div
+          className="border rounded-full w-11 h-11 cursor-pointer"
+          onClick={() => router.push("/profile")}
+        >
           <Image
             src="/avatar.png"
             alt="Avatar"
@@ -24,7 +29,7 @@ const MobileHeader = () => {
           />
         </div>
       </div>
-      <div>
+      <div onClick={() => router.push("/")}>
         <Logo />
       </div>
       <div className="pb-8">

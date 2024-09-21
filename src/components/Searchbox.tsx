@@ -18,11 +18,13 @@ const Searchbox = () => {
   };
 
   const onSearchClick = () => {
-    router.push("/search");
+    router.push(`search?search=${inputValue}`);
+    setInputValue("");
   };
 
   const onFilterClick = () => {
-    router.push("/search");
+    router.push(`search?search=${inputValue}`);
+    setInputValue("");
   };
 
   return (
