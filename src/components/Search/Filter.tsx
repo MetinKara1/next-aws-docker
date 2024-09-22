@@ -142,7 +142,7 @@ const Filter = ({ filters }: any) => {
     if (params.toString().includes(title.toLowerCase())) {
       let newTitle = params.get(title.toLowerCase());
       let newTitleValue: string = "";
-      if (newTitle.includes(text.toLowerCase())) {
+      if (newTitle?.includes(text.toLowerCase())) {
         if (newTitle.includes("_")) {
           let titleValuesArr = newTitle.split("_");
           titleValuesArr = titleValuesArr.filter(
