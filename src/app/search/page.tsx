@@ -14,28 +14,46 @@ import FilterSkeleton from "@/components/Search/FilterSkeleton";
 
 const Search = (props: any) => {
   const [cars, setCars] = useState<any>([]);
+  const [filters, setFilters] = useState<any>([]);
   const [loading, setLoading] = useState(false);
   const params = useSearchParams();
   const searchTerms = params.get("search");
+  const allParams: { [anyProp: string]: string } = {};
+
+  params.forEach((value: any, key: any) => {
+    allParams[key] = value;
+  });
+
+  let allSearchTerms: any = Object.entries(allParams).map(function (value) {
+    return value[0] + "=" + value[1];
+  });
+
+  if (allSearchTerms?.length > 1) allSearchTerms = allSearchTerms.join("&");
+  else allSearchTerms = allSearchTerms.toString();
+
+  console.log("allSearchTerms: ", allSearchTerms);
 
   useEffect(() => {
     setLoading(true);
-    fetch(`/api/search?search=${searchTerms}`).then(async (res) => {
-      const response = await res.json();
-      console.log("search response: ", response);
-      setTimeout(() => {
-        setLoading(false);
-        setCars(response);
-      }, 3000);
-    });
-  }, [searchTerms]);
+    fetch(`/api/search?search=${searchTerms}&${allSearchTerms || ""}`).then(
+      async (res) => {
+        const response = await res.json();
+        console.log("search response: ", response);
+        setTimeout(() => {
+          setLoading(false);
+          setCars(response.cars);
+          setFilters(response.filters);
+        }, 3000);
+      }
+    );
+  }, [searchTerms, allSearchTerms]);
 
   const { breakpoint } = useBreakpoint(BREAKPOINTS);
   const { SwapIcon } = useIcons();
   return (
     <div className="flex h-full w-full justify-center">
       <div className="mobile:hidden laptop:block">
-        {loading ? <FilterSkeleton /> : <Filter />}
+        {loading ? <FilterSkeleton /> : <Filter filters={filters} />}
       </div>
       <div className="mobile:px-6 laptop:px-8 flex-col items-center w-full">
         <div className="mt-8 laptop:flex desktop:flex-row mobile:flex mobile:flex-col w-full items-center laptop:gap-8 desktop:gap-8">
