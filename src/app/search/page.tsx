@@ -42,11 +42,25 @@ const Search = (props: any) => {
         setTimeout(() => {
           setLoading(false);
           setCars(response.cars);
-          setFilters(response.filters);
+          // setFilters(response.filters);
         }, 3000);
       }
     );
   }, [searchTerms, allSearchTerms]);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Filters`)
+      .then(async (res) => {
+        const data = await res.json();
+        console.log("*** filters response: ", data);
+        setFilters(data);
+        setLoading(false);
+      })
+      .catch((err: any) => {
+        console.log("*** err: ", err);
+      });
+  }, []);
 
   const { breakpoint } = useBreakpoint(BREAKPOINTS);
   const { SwapIcon } = useIcons();

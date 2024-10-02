@@ -203,7 +203,7 @@ const Filter = ({ filters }: any) => {
               return (
                 <div key={i}>
                   <p className="text-xs text-[#90A3BF] mb-7">{item.title}</p>
-                  {item.list.map((filterItem: any) => {
+                  {item.filterTypes.map((filterItem: any) => {
                     return (
                       <div
                         className="mb-8"
