@@ -29,7 +29,7 @@ const Homepage = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://localhost:7154/api/Cars")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Cars`)
       .then(async (res) => {
         const data = await res.json();
         console.log("*** service response: ", data);
