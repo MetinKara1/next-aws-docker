@@ -31,7 +31,7 @@ const Search = (props: any) => {
   if (allSearchTerms?.length > 1) allSearchTerms = allSearchTerms.join("&");
   else allSearchTerms = allSearchTerms.toString();
 
-  console.log("allSearchTerms: ", allSearchTerms);
+  console.log("*** allSearchTerms: ", allSearchTerms);
 
   useEffect(() => {
     setLoading(true);
@@ -46,6 +46,41 @@ const Search = (props: any) => {
         }, 3000);
       }
     );
+  }, [searchTerms, allSearchTerms]);
+
+  useEffect(() => {
+    setLoading(true);
+
+    let filterArray: any = [];
+    let allQueries = allSearchTerms;
+    if (allQueries.includes("&")) {
+      let filters = allQueries.split("&");
+      console.log("filterss: ", filters);
+
+      filters.map((item: any) => {
+        let key = item.split("=")[0];
+        let value = item.split("=")[1];
+        filterArray.push({
+          field: key,
+          values: value.includes("_") ? value.split("_") : [value],
+        });
+      });
+
+      console.log("*** filter array: ", filterArray);
+    }
+
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Filters`, {
+      method: "POST",
+      body: "",
+    }).then(async (res) => {
+      const response = await res.json();
+      console.log("search response: ", response);
+      setTimeout(() => {
+        setLoading(false);
+        // setCars(response.cars);
+        // setFilters(response.filters);
+      }, 3000);
+    });
   }, [searchTerms, allSearchTerms]);
 
   useEffect(() => {
